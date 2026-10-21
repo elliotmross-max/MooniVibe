@@ -2,7 +2,7 @@
 
 A stereo phase shifter for the Ableton Move, built as a [Schwung](https://github.com/charlesvestal/schwung) `audio_fx` module.
 
-Four all-pass stages swept by a lamp, with component values you can swap. The notches come from summing the phase-shifted path with dry, the way the original circuit does it.
+Four all-pass stages swept by a lamp, with component values you can swap. The notches come from summing the phase-shifted path with dry.
 
 ## How it works
 

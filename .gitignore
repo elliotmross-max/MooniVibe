@@ -1,0 +1,8 @@
+build/
+dist/
+*.o
+*.so
+*.tar.gz
+.DS_Store
+._*
+!vendor/schwung/plugin_api_v1.h

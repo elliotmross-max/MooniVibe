@@ -1,0 +1,344 @@
+{
+  "id": "moonivibe",
+  "name": "MooniVibe",
+  "abbrev": "MVB",
+  "version": "1.0.0",
+  "description": "Stereo phase shifter with swappable circuit parts: four all-pass stages driven by mismatched photocells, plus capacitors, lamps, drive resistors and clipping diodes you can substitute.",
+  "author": "Moongriffin",
+  "license": "MIT",
+  "dsp": "moonivibe.so",
+  "api_version": 2,
+  "component_type": "audio_fx",
+  "capabilities": {
+    "audio_out": true,
+    "audio_in": true,
+    "chainable": true,
+    "component_type": "audio_fx",
+    "chain_params": [
+      {
+        "key": "speed",
+        "name": "Speed",
+        "type": "float",
+        "min": 0.02,
+        "max": 12,
+        "default": 0.6,
+        "step": 0.01,
+        "unit": "Hz"
+      },
+      {
+        "key": "intensity",
+        "name": "Intensity",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "default": 0.65,
+        "step": 0.01
+      },
+      {
+        "key": "mode",
+        "name": "Mode",
+        "type": "enum",
+        "options": [
+          "Vibrato",
+          "Chorus"
+        ],
+        "default": "Chorus"
+      },
+      {
+        "key": "mix",
+        "name": "Mix",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "default": 0.75,
+        "step": 0.01
+      },
+      {
+        "key": "output",
+        "name": "Output",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "default": 0.7,
+        "step": 0.01
+      },
+      {
+        "key": "lamp_lfo",
+        "name": "Lamp LFO",
+        "type": "float",
+        "min": 0,
+        "max": 8,
+        "default": 0.17,
+        "step": 0.01
+      },
+      {
+        "key": "lamp_bias",
+        "name": "Lamp Bias",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "default": 0.5,
+        "step": 0.01
+      },
+      {
+        "key": "cap",
+        "name": "Capacitor",
+        "type": "enum",
+        "options": [
+          "Stock 220n",
+          "Dark 100n",
+          "Mid 47n",
+          "Bright 22n"
+        ],
+        "default": "Stock 220n"
+      },
+      {
+        "key": "lamp",
+        "name": "Lamp",
+        "type": "enum",
+        "options": [
+          "Matched",
+          "Stock",
+          "Wide",
+          "Drift"
+        ],
+        "default": "Stock"
+      },
+      {
+        "key": "drive",
+        "name": "Drive Res",
+        "type": "enum",
+        "options": [
+          "Clean 100k",
+          "Stock 47k",
+          "Hot 22k",
+          "Slam 10k"
+        ],
+        "default": "Stock 47k"
+      },
+      {
+        "key": "diode",
+        "name": "Diodes",
+        "type": "enum",
+        "options": [
+          "None",
+          "Silicon",
+          "Germanium",
+          "LED"
+        ],
+        "default": "None"
+      },
+      {
+        "key": "stages",
+        "name": "Stages",
+        "type": "enum",
+        "options": [
+          "4 stages",
+          "6 stages"
+        ],
+        "default": "4 stages"
+      },
+      {
+        "key": "lfo_shape",
+        "name": "LFO Shape",
+        "type": "enum",
+        "options": [
+          "Sine",
+          "Triangle",
+          "Soft Square"
+        ],
+        "default": "Sine"
+      },
+      {
+        "key": "spread",
+        "name": "Stereo Spread",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "default": 0.25,
+        "step": 0.01
+      },
+      {
+        "key": "mismatch",
+        "name": "Cell Mismatch",
+        "type": "float",
+        "min": 0,
+        "max": 1,
+        "default": 1,
+        "step": 0.01
+      }
+    ],
+    "ui_hierarchy": {
+      "modes": null,
+      "levels": {
+        "root": {
+          "name": "MooniVibe",
+          "knobs": [
+            "speed",
+            "intensity",
+            "mix",
+            "output",
+            "lamp_lfo",
+            "lamp_bias",
+            "cap",
+            "lamp"
+          ],
+          "params": [
+            {
+              "key": "speed",
+              "label": "Speed",
+              "type": "float",
+              "min": 0.02,
+              "max": 12,
+              "default": 0.6,
+              "step": 0.01,
+              "unit": "Hz"
+            },
+            {
+              "key": "intensity",
+              "label": "Intensity",
+              "type": "float",
+              "min": 0,
+              "max": 1,
+              "default": 0.65,
+              "step": 0.01
+            },
+            {
+              "key": "mode",
+              "label": "Mode",
+              "type": "enum",
+              "options": [
+                "Vibrato",
+                "Chorus"
+              ],
+              "default": "Chorus"
+            },
+            {
+              "key": "mix",
+              "label": "Mix",
+              "type": "float",
+              "min": 0,
+              "max": 1,
+              "default": 0.75,
+              "step": 0.01
+            },
+            {
+              "key": "output",
+              "label": "Output",
+              "type": "float",
+              "min": 0,
+              "max": 1,
+              "default": 0.7,
+              "step": 0.01
+            },
+            {
+              "key": "lamp_lfo",
+              "label": "Lamp LFO",
+              "type": "float",
+              "min": 0,
+              "max": 8,
+              "default": 0.17,
+              "step": 0.01
+            },
+            {
+              "key": "lamp_bias",
+              "label": "Lamp Bias",
+              "type": "float",
+              "min": 0,
+              "max": 1,
+              "default": 0.5,
+              "step": 0.01
+            },
+            {
+              "key": "cap",
+              "label": "Capacitor",
+              "type": "enum",
+              "options": [
+                "Stock 220n",
+                "Dark 100n",
+                "Mid 47n",
+                "Bright 22n"
+              ],
+              "default": "Stock 220n"
+            },
+            {
+              "key": "lamp",
+              "label": "Lamp",
+              "type": "enum",
+              "options": [
+                "Matched",
+                "Stock",
+                "Wide",
+                "Drift"
+              ],
+              "default": "Stock"
+            },
+            {
+              "key": "drive",
+              "label": "Drive Res",
+              "type": "enum",
+              "options": [
+                "Clean 100k",
+                "Stock 47k",
+                "Hot 22k",
+                "Slam 10k"
+              ],
+              "default": "Stock 47k"
+            },
+            {
+              "key": "diode",
+              "label": "Diodes",
+              "type": "enum",
+              "options": [
+                "None",
+                "Silicon",
+                "Germanium",
+                "LED"
+              ],
+              "default": "None"
+            },
+            {
+              "key": "stages",
+              "label": "Stages",
+              "type": "enum",
+              "options": [
+                "4 stages",
+                "6 stages"
+              ],
+              "default": "4 stages"
+            },
+            {
+              "key": "lfo_shape",
+              "label": "LFO Shape",
+              "type": "enum",
+              "options": [
+                "Sine",
+                "Triangle",
+                "Soft Square"
+              ],
+              "default": "Sine"
+            },
+            {
+              "key": "spread",
+              "label": "Stereo Spread",
+              "type": "float",
+              "min": 0,
+              "max": 1,
+              "default": 0.25,
+              "step": 0.01
+            },
+            {
+              "key": "mismatch",
+              "label": "Cell Mismatch",
+              "type": "float",
+              "min": 0,
+              "max": 1,
+              "default": 1,
+              "step": 0.01
+            }
+          ]
+        }
+      }
+    }
+  }
+}

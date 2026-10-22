@@ -1,4 +1,18 @@
 {
-  "version": "1.1.1",
-  "download_url": "github.com https://github.com/elliotmross-max/MooniVibe/releases/download/v1.0.0/moonivibe-module.tar.gz"
+  "id": "moonivibe",
+  "name": "MooniVibe",
+  "abbrev": "MVB",
+  "version": "1.0.0",
+  "description": "Stereo phase shifter with swappable circuit parts.",
+  "author": "Moongriffin",
+  "license": "MIT",
+  "dsp": "moonivibe.so",
+  "api_version": 2,
+  "component_type": "audio_fx",
+  "capabilities": {
+    "audio_out": true,
+    "audio_in": true,
+    "chainable": true,
+    "component_type": "audio_fx"
+  }
 }
